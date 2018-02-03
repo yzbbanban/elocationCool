@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.riti.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.riti.pojo.User" >
+    <constructor >
+      <idArg column="cool_user_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_token" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_nick" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_gender" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="cool_user_email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="cool_user_level" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="cool_user_update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cool_user_id, cool_company_id, cool_user_name, cool_user_password, cool_user_token, 
+    cool_user_nick, cool_user_gender, cool_user_email, cool_create_time, cool_user_level, 
+    cool_user_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cool_user
+    where cool_user_id = #{coolUserId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cool_user
+    where cool_user_id = #{coolUserId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.riti.pojo.User" >
+    insert into cool_user (cool_user_id, cool_company_id, cool_user_name, 
+      cool_user_password, cool_user_token, cool_user_nick, 
+      cool_user_gender, cool_user_email, cool_create_time, 
+      cool_user_level, cool_user_update_time)
+    values (#{coolUserId,jdbcType=VARCHAR}, #{coolCompanyId,jdbcType=VARCHAR}, #{coolUserName,jdbcType=VARCHAR}, 
+      #{coolUserPassword,jdbcType=VARCHAR}, #{coolUserToken,jdbcType=VARCHAR}, #{coolUserNick,jdbcType=VARCHAR}, 
+      #{coolUserGender,jdbcType=CHAR}, #{coolUserEmail,jdbcType=VARCHAR}, #{coolCreateTime,jdbcType=TIMESTAMP}, 
+      #{coolUserLevel,jdbcType=SMALLINT}, #{coolUserUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.riti.pojo.User" >
+    insert into cool_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coolUserId != null" >
+        cool_user_id,
+      </if>
+      <if test="coolCompanyId != null" >
+        cool_company_id,
+      </if>
+      <if test="coolUserName != null" >
+        cool_user_name,
+      </if>
+      <if test="coolUserPassword != null" >
+        cool_user_password,
+      </if>
+      <if test="coolUserToken != null" >
+        cool_user_token,
+      </if>
+      <if test="coolUserNick != null" >
+        cool_user_nick,
+      </if>
+      <if test="coolUserGender != null" >
+        cool_user_gender,
+      </if>
+      <if test="coolUserEmail != null" >
+        cool_user_email,
+      </if>
+      <if test="coolCreateTime != null" >
+        cool_create_time,
+      </if>
+      <if test="coolUserLevel != null" >
+        cool_user_level,
+      </if>
+      <if test="coolUserUpdateTime != null" >
+        cool_user_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coolUserId != null" >
+        #{coolUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyId != null" >
+        #{coolCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserName != null" >
+        #{coolUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserPassword != null" >
+        #{coolUserPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserToken != null" >
+        #{coolUserToken,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserNick != null" >
+        #{coolUserNick,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserGender != null" >
+        #{coolUserGender,jdbcType=CHAR},
+      </if>
+      <if test="coolUserEmail != null" >
+        #{coolUserEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCreateTime != null" >
+        #{coolCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coolUserLevel != null" >
+        #{coolUserLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="coolUserUpdateTime != null" >
+        #{coolUserUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.User" >
+    update cool_user
+    <set >
+      <if test="coolCompanyId != null" >
+        cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserName != null" >
+        cool_user_name = #{coolUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserPassword != null" >
+        cool_user_password = #{coolUserPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserToken != null" >
+        cool_user_token = #{coolUserToken,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserNick != null" >
+        cool_user_nick = #{coolUserNick,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserGender != null" >
+        cool_user_gender = #{coolUserGender,jdbcType=CHAR},
+      </if>
+      <if test="coolUserEmail != null" >
+        cool_user_email = #{coolUserEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCreateTime != null" >
+        cool_create_time = #{coolCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coolUserLevel != null" >
+        cool_user_level = #{coolUserLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="coolUserUpdateTime != null" >
+        cool_user_update_time = #{coolUserUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cool_user_id = #{coolUserId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.User" >
+    update cool_user
+    set cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
+      cool_user_name = #{coolUserName,jdbcType=VARCHAR},
+      cool_user_password = #{coolUserPassword,jdbcType=VARCHAR},
+      cool_user_token = #{coolUserToken,jdbcType=VARCHAR},
+      cool_user_nick = #{coolUserNick,jdbcType=VARCHAR},
+      cool_user_gender = #{coolUserGender,jdbcType=CHAR},
+      cool_user_email = #{coolUserEmail,jdbcType=VARCHAR},
+      cool_create_time = #{coolCreateTime,jdbcType=TIMESTAMP},
+      cool_user_level = #{coolUserLevel,jdbcType=SMALLINT},
+      cool_user_update_time = #{coolUserUpdateTime,jdbcType=TIMESTAMP}
+    where cool_user_id = #{coolUserId,jdbcType=VARCHAR}
+  </update>
+</mapper>

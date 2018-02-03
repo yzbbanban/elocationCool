@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.riti.dao.TagListMapper" >
+  <resultMap id="BaseResultMap" type="com.riti.pojo.TagList" >
+    <constructor >
+      <idArg column="cool_tag_list_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_tag_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="cool_tag_update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cool_tag_list_id, cool_user_id, uid, cool_tag_create_time, cool_tag_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cool_tag_list
+    where cool_tag_list_id = #{coolTagListId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cool_tag_list
+    where cool_tag_list_id = #{coolTagListId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.riti.pojo.TagList" >
+    insert into cool_tag_list (cool_tag_list_id, cool_user_id, uid, 
+      cool_tag_create_time, cool_tag_update_time
+      )
+    values (#{coolTagListId,jdbcType=VARCHAR}, #{coolUserId,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, 
+      #{coolTagCreateTime,jdbcType=TIMESTAMP}, #{coolTagUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.riti.pojo.TagList" >
+    insert into cool_tag_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coolTagListId != null" >
+        cool_tag_list_id,
+      </if>
+      <if test="coolUserId != null" >
+        cool_user_id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="coolTagCreateTime != null" >
+        cool_tag_create_time,
+      </if>
+      <if test="coolTagUpdateTime != null" >
+        cool_tag_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coolTagListId != null" >
+        #{coolTagListId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserId != null" >
+        #{coolUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="coolTagCreateTime != null" >
+        #{coolTagCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coolTagUpdateTime != null" >
+        #{coolTagUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.TagList" >
+    update cool_tag_list
+    <set >
+      <if test="coolUserId != null" >
+        cool_user_id = #{coolUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="coolTagCreateTime != null" >
+        cool_tag_create_time = #{coolTagCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coolTagUpdateTime != null" >
+        cool_tag_update_time = #{coolTagUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cool_tag_list_id = #{coolTagListId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.TagList" >
+    update cool_tag_list
+    set cool_user_id = #{coolUserId,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      cool_tag_create_time = #{coolTagCreateTime,jdbcType=TIMESTAMP},
+      cool_tag_update_time = #{coolTagUpdateTime,jdbcType=TIMESTAMP}
+    where cool_tag_list_id = #{coolTagListId,jdbcType=VARCHAR}
+  </update>
+</mapper>

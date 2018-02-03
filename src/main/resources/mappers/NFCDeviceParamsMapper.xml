@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.riti.dao.NFCDeviceParamsMapper" >
+  <resultMap id="BaseResultMap" type="com.riti.pojo.NFCDeviceParams" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Company" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DeviceNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="GoodsName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="delay" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="IntervalTime" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="MaxTemperature" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="MinTemperature" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="Model" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="ReadStop" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="DataUploadMode" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="TagType" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="MaxHum" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="MinHum" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="deviceCreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="deviceUpdateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, Uid, Company, DeviceNum, GoodsName, delay, IntervalTime, MaxTemperature, MinTemperature, 
+    Model, ReadStop, DataUploadMode, TagType, MaxHum, MinHum, deviceCreateTime, deviceUpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from NFC_Device_Params
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from NFC_Device_Params
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.riti.pojo.NFCDeviceParams" >
+    insert into NFC_Device_Params (id, Uid, Company, 
+      DeviceNum, GoodsName, delay, 
+      IntervalTime, MaxTemperature, MinTemperature, 
+      Model, ReadStop, DataUploadMode, 
+      TagType, MaxHum, MinHum, 
+      deviceCreateTime, deviceUpdateTime)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, 
+      #{devicenum,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, #{delay,jdbcType=SMALLINT}, 
+      #{intervaltime,jdbcType=SMALLINT}, #{maxtemperature,jdbcType=REAL}, #{mintemperature,jdbcType=REAL}, 
+      #{model,jdbcType=SMALLINT}, #{readstop,jdbcType=SMALLINT}, #{datauploadmode,jdbcType=SMALLINT}, 
+      #{tagtype,jdbcType=SMALLINT}, #{maxhum,jdbcType=REAL}, #{minhum,jdbcType=REAL}, 
+      #{devicecreatetime,jdbcType=TIMESTAMP}, #{deviceupdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.riti.pojo.NFCDeviceParams" >
+    insert into NFC_Device_Params
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        Uid,
+      </if>
+      <if test="company != null" >
+        Company,
+      </if>
+      <if test="devicenum != null" >
+        DeviceNum,
+      </if>
+      <if test="goodsname != null" >
+        GoodsName,
+      </if>
+      <if test="delay != null" >
+        delay,
+      </if>
+      <if test="intervaltime != null" >
+        IntervalTime,
+      </if>
+      <if test="maxtemperature != null" >
+        MaxTemperature,
+      </if>
+      <if test="mintemperature != null" >
+        MinTemperature,
+      </if>
+      <if test="model != null" >
+        Model,
+      </if>
+      <if test="readstop != null" >
+        ReadStop,
+      </if>
+      <if test="datauploadmode != null" >
+        DataUploadMode,
+      </if>
+      <if test="tagtype != null" >
+        TagType,
+      </if>
+      <if test="maxhum != null" >
+        MaxHum,
+      </if>
+      <if test="minhum != null" >
+        MinHum,
+      </if>
+      <if test="devicecreatetime != null" >
+        deviceCreateTime,
+      </if>
+      <if test="deviceupdatetime != null" >
+        deviceUpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="devicenum != null" >
+        #{devicenum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null" >
+        #{delay,jdbcType=SMALLINT},
+      </if>
+      <if test="intervaltime != null" >
+        #{intervaltime,jdbcType=SMALLINT},
+      </if>
+      <if test="maxtemperature != null" >
+        #{maxtemperature,jdbcType=REAL},
+      </if>
+      <if test="mintemperature != null" >
+        #{mintemperature,jdbcType=REAL},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=SMALLINT},
+      </if>
+      <if test="readstop != null" >
+        #{readstop,jdbcType=SMALLINT},
+      </if>
+      <if test="datauploadmode != null" >
+        #{datauploadmode,jdbcType=SMALLINT},
+      </if>
+      <if test="tagtype != null" >
+        #{tagtype,jdbcType=SMALLINT},
+      </if>
+      <if test="maxhum != null" >
+        #{maxhum,jdbcType=REAL},
+      </if>
+      <if test="minhum != null" >
+        #{minhum,jdbcType=REAL},
+      </if>
+      <if test="devicecreatetime != null" >
+        #{devicecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceupdatetime != null" >
+        #{deviceupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.NFCDeviceParams" >
+    update NFC_Device_Params
+    <set >
+      <if test="uid != null" >
+        Uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        Company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="devicenum != null" >
+        DeviceNum = #{devicenum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsname != null" >
+        GoodsName = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null" >
+        delay = #{delay,jdbcType=SMALLINT},
+      </if>
+      <if test="intervaltime != null" >
+        IntervalTime = #{intervaltime,jdbcType=SMALLINT},
+      </if>
+      <if test="maxtemperature != null" >
+        MaxTemperature = #{maxtemperature,jdbcType=REAL},
+      </if>
+      <if test="mintemperature != null" >
+        MinTemperature = #{mintemperature,jdbcType=REAL},
+      </if>
+      <if test="model != null" >
+        Model = #{model,jdbcType=SMALLINT},
+      </if>
+      <if test="readstop != null" >
+        ReadStop = #{readstop,jdbcType=SMALLINT},
+      </if>
+      <if test="datauploadmode != null" >
+        DataUploadMode = #{datauploadmode,jdbcType=SMALLINT},
+      </if>
+      <if test="tagtype != null" >
+        TagType = #{tagtype,jdbcType=SMALLINT},
+      </if>
+      <if test="maxhum != null" >
+        MaxHum = #{maxhum,jdbcType=REAL},
+      </if>
+      <if test="minhum != null" >
+        MinHum = #{minhum,jdbcType=REAL},
+      </if>
+      <if test="devicecreatetime != null" >
+        deviceCreateTime = #{devicecreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceupdatetime != null" >
+        deviceUpdateTime = #{deviceupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.NFCDeviceParams" >
+    update NFC_Device_Params
+    set Uid = #{uid,jdbcType=INTEGER},
+      Company = #{company,jdbcType=VARCHAR},
+      DeviceNum = #{devicenum,jdbcType=VARCHAR},
+      GoodsName = #{goodsname,jdbcType=VARCHAR},
+      delay = #{delay,jdbcType=SMALLINT},
+      IntervalTime = #{intervaltime,jdbcType=SMALLINT},
+      MaxTemperature = #{maxtemperature,jdbcType=REAL},
+      MinTemperature = #{mintemperature,jdbcType=REAL},
+      Model = #{model,jdbcType=SMALLINT},
+      ReadStop = #{readstop,jdbcType=SMALLINT},
+      DataUploadMode = #{datauploadmode,jdbcType=SMALLINT},
+      TagType = #{tagtype,jdbcType=SMALLINT},
+      MaxHum = #{maxhum,jdbcType=REAL},
+      MinHum = #{minhum,jdbcType=REAL},
+      deviceCreateTime = #{devicecreatetime,jdbcType=TIMESTAMP},
+      deviceUpdateTime = #{deviceupdatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

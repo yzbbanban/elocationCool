@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.riti.dao.ManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.riti.pojo.Manager" >
+    <constructor >
+      <idArg column="cool_manager_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_user_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_tag_list_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cool_manager_id, cool_user_id, cool_company_id, cool_tag_list_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cool_manager
+    where cool_manager_id = #{coolManagerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cool_manager
+    where cool_manager_id = #{coolManagerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.riti.pojo.Manager" >
+    insert into cool_manager (cool_manager_id, cool_user_id, cool_company_id, 
+      cool_tag_list_id)
+    values (#{coolManagerId,jdbcType=VARCHAR}, #{coolUserId,jdbcType=VARCHAR}, #{coolCompanyId,jdbcType=VARCHAR}, 
+      #{coolTagListId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.riti.pojo.Manager" >
+    insert into cool_manager
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coolManagerId != null" >
+        cool_manager_id,
+      </if>
+      <if test="coolUserId != null" >
+        cool_user_id,
+      </if>
+      <if test="coolCompanyId != null" >
+        cool_company_id,
+      </if>
+      <if test="coolTagListId != null" >
+        cool_tag_list_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coolManagerId != null" >
+        #{coolManagerId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolUserId != null" >
+        #{coolUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyId != null" >
+        #{coolCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolTagListId != null" >
+        #{coolTagListId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.Manager" >
+    update cool_manager
+    <set >
+      <if test="coolUserId != null" >
+        cool_user_id = #{coolUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyId != null" >
+        cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolTagListId != null" >
+        cool_tag_list_id = #{coolTagListId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cool_manager_id = #{coolManagerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.Manager" >
+    update cool_manager
+    set cool_user_id = #{coolUserId,jdbcType=VARCHAR},
+      cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
+      cool_tag_list_id = #{coolTagListId,jdbcType=VARCHAR}
+    where cool_manager_id = #{coolManagerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

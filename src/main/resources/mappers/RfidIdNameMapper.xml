@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.riti.dao.RfidIdNameMapper" >
+  <resultMap id="BaseResultMap" type="com.riti.pojo.RfidIdName" >
+    <constructor >
+      <idArg column="rfidOrderId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rfidIdName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rfidOrderNumCreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rfidOrderId, rfidIdName, rfidOrderNumCreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rfidIdName
+    where rfidOrderId = #{rfidorderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rfidIdName
+    where rfidOrderId = #{rfidorderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.riti.pojo.RfidIdName" >
+    insert into rfidIdName (rfidOrderId, rfidIdName, rfidOrderNumCreateTime
+      )
+    values (#{rfidorderid,jdbcType=INTEGER}, #{rfididname,jdbcType=VARCHAR}, #{rfidordernumcreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.riti.pojo.RfidIdName" >
+    insert into rfidIdName
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rfidorderid != null" >
+        rfidOrderId,
+      </if>
+      <if test="rfididname != null" >
+        rfidIdName,
+      </if>
+      <if test="rfidordernumcreatetime != null" >
+        rfidOrderNumCreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rfidorderid != null" >
+        #{rfidorderid,jdbcType=INTEGER},
+      </if>
+      <if test="rfididname != null" >
+        #{rfididname,jdbcType=VARCHAR},
+      </if>
+      <if test="rfidordernumcreatetime != null" >
+        #{rfidordernumcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.RfidIdName" >
+    update rfidIdName
+    <set >
+      <if test="rfididname != null" >
+        rfidIdName = #{rfididname,jdbcType=VARCHAR},
+      </if>
+      <if test="rfidordernumcreatetime != null" >
+        rfidOrderNumCreateTime = #{rfidordernumcreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rfidOrderId = #{rfidorderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.RfidIdName" >
+    update rfidIdName
+    set rfidIdName = #{rfididname,jdbcType=VARCHAR},
+      rfidOrderNumCreateTime = #{rfidordernumcreatetime,jdbcType=TIMESTAMP}
+    where rfidOrderId = #{rfidorderid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.riti.dao.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.riti.pojo.Company" >
+    <constructor >
+      <idArg column="cool_company_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_tel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cool_company_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="cool_company_update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cool_company_id, cool_company_name, cool_company_email, cool_company_address, cool_company_tel, 
+    cool_company_create_time, cool_company_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cool_company
+    where cool_company_id = #{coolCompanyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cool_company
+    where cool_company_id = #{coolCompanyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.riti.pojo.Company" >
+    insert into cool_company (cool_company_id, cool_company_name, cool_company_email, 
+      cool_company_address, cool_company_tel, cool_company_create_time, 
+      cool_company_update_time)
+    values (#{coolCompanyId,jdbcType=VARCHAR}, #{coolCompanyName,jdbcType=VARCHAR}, #{coolCompanyEmail,jdbcType=VARCHAR}, 
+      #{coolCompanyAddress,jdbcType=VARCHAR}, #{coolCompanyTel,jdbcType=VARCHAR}, #{coolCompanyCreateTime,jdbcType=TIMESTAMP}, 
+      #{coolCompanyUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.riti.pojo.Company" >
+    insert into cool_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coolCompanyId != null" >
+        cool_company_id,
+      </if>
+      <if test="coolCompanyName != null" >
+        cool_company_name,
+      </if>
+      <if test="coolCompanyEmail != null" >
+        cool_company_email,
+      </if>
+      <if test="coolCompanyAddress != null" >
+        cool_company_address,
+      </if>
+      <if test="coolCompanyTel != null" >
+        cool_company_tel,
+      </if>
+      <if test="coolCompanyCreateTime != null" >
+        cool_company_create_time,
+      </if>
+      <if test="coolCompanyUpdateTime != null" >
+        cool_company_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coolCompanyId != null" >
+        #{coolCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyName != null" >
+        #{coolCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyEmail != null" >
+        #{coolCompanyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyAddress != null" >
+        #{coolCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyTel != null" >
+        #{coolCompanyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyCreateTime != null" >
+        #{coolCompanyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coolCompanyUpdateTime != null" >
+        #{coolCompanyUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.Company" >
+    update cool_company
+    <set >
+      <if test="coolCompanyName != null" >
+        cool_company_name = #{coolCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyEmail != null" >
+        cool_company_email = #{coolCompanyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyAddress != null" >
+        cool_company_address = #{coolCompanyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyTel != null" >
+        cool_company_tel = #{coolCompanyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="coolCompanyCreateTime != null" >
+        cool_company_create_time = #{coolCompanyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coolCompanyUpdateTime != null" >
+        cool_company_update_time = #{coolCompanyUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cool_company_id = #{coolCompanyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.Company" >
+    update cool_company
+    set cool_company_name = #{coolCompanyName,jdbcType=VARCHAR},
+      cool_company_email = #{coolCompanyEmail,jdbcType=VARCHAR},
+      cool_company_address = #{coolCompanyAddress,jdbcType=VARCHAR},
+      cool_company_tel = #{coolCompanyTel,jdbcType=VARCHAR},
+      cool_company_create_time = #{coolCompanyCreateTime,jdbcType=TIMESTAMP},
+      cool_company_update_time = #{coolCompanyUpdateTime,jdbcType=TIMESTAMP}
+    where cool_company_id = #{coolCompanyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

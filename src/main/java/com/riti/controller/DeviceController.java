@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/device")
 public class DeviceController {
+
 	@Autowired
 	private IDeviceService service;
 

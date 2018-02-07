@@ -9,23 +9,23 @@ public class NFCTemperatureData {
 
     private String daterecordtime;
 
-    private Float maxtemperature;
+    private Double maxtemperature;
 
-    private Float mintemperature;
+    private Double mintemperature;
 
-    private Float temperature;
+    private Double temperature;
 
-    private Short tempstatus;
+    private Integer tempstatus;
 
-    private Float maxhum;
+    private Double maxhum;
 
-    private Float minhum;
+    private Double minhum;
 
-    private Float hum;
+    private Double hum;
 
-    private Short humstatus;
+    private Integer humstatus;
 
-    public NFCTemperatureData(Integer id, Integer uid, String goodsname, String daterecordtime, Float maxtemperature, Float mintemperature, Float temperature, Short tempstatus, Float maxhum, Float minhum, Float hum, Short humstatus) {
+    public NFCTemperatureData(Integer id, Integer uid, String goodsname, String daterecordtime, Double maxtemperature, Double mintemperature, Double temperature, Integer tempstatus, Double maxhum, Double minhum, Double hum, Integer humstatus) {
         this.id = id;
         this.uid = uid;
         this.goodsname = goodsname;
@@ -76,67 +76,67 @@ public class NFCTemperatureData {
         this.daterecordtime = daterecordtime == null ? null : daterecordtime.trim();
     }
 
-    public Float getMaxtemperature() {
+    public Double getMaxtemperature() {
         return maxtemperature;
     }
 
-    public void setMaxtemperature(Float maxtemperature) {
+    public void setMaxtemperature(Double maxtemperature) {
         this.maxtemperature = maxtemperature;
     }
 
-    public Float getMintemperature() {
+    public Double getMintemperature() {
         return mintemperature;
     }
 
-    public void setMintemperature(Float mintemperature) {
+    public void setMintemperature(Double mintemperature) {
         this.mintemperature = mintemperature;
     }
 
-    public Float getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Float temperature) {
+    public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
 
-    public Short getTempstatus() {
+    public Integer getTempstatus() {
         return tempstatus;
     }
 
-    public void setTempstatus(Short tempstatus) {
+    public void setTempstatus(Integer tempstatus) {
         this.tempstatus = tempstatus;
     }
 
-    public Float getMaxhum() {
+    public Double getMaxhum() {
         return maxhum;
     }
 
-    public void setMaxhum(Float maxhum) {
+    public void setMaxhum(Double maxhum) {
         this.maxhum = maxhum;
     }
 
-    public Float getMinhum() {
+    public Double getMinhum() {
         return minhum;
     }
 
-    public void setMinhum(Float minhum) {
+    public void setMinhum(Double minhum) {
         this.minhum = minhum;
     }
 
-    public Float getHum() {
+    public Double getHum() {
         return hum;
     }
 
-    public void setHum(Float hum) {
+    public void setHum(Double hum) {
         this.hum = hum;
     }
 
-    public Short getHumstatus() {
+    public Integer getHumstatus() {
         return humstatus;
     }
 
-    public void setHumstatus(Short humstatus) {
+    public void setHumstatus(Integer humstatus) {
         this.humstatus = humstatus;
     }
 }

@@ -37,15 +37,15 @@ $(document).ready(function () {
             success: function (result) {
                 if (result.code == "10000") {
                     var $tr = $("#device_params");
-                    $tr.html('<th>' + result.result.Uid + '</th>'
-                        + '<th>' + result.result.Company + '</th>'
-                        + '<th>' + result.result.GoodsName + '</th>'
-                        + '<th>' + result.result.Interval + '</th>'
-                        + '<th>' + result.result.MinTemperature + '°C~' + result.result.MaxTemperature + '°C</th>'
-                        + '<th>' + result.result.MinHum + 'RH%~' + result.result.MaxHum + 'RH%</th>'
-                        + '<th>' + (result.result.Model = 1 ? "循环" : "一次") + '</th>'
-                        + '<th>' + (result.result.ReadStop = 0 ? "读停启用" : "未启用") + '</th>'
-                        + '<th>' + (result.result.TagType = 1 ? "NFC" : "蓝牙") + '</th>');
+                    $tr.html('<th>' + result.result.uid + '</th>'
+                        + '<th>' + result.result.company + '</th>'
+                        + '<th>' + result.result.goodsname + '</th>'
+                        + '<th>' + result.result.intervaltime + '</th>'
+                        + '<th>' + result.result.mintemperature + '°C~' + result.result.maxtemperature + '°C</th>'
+                        + '<th>' + result.result.minhum + 'RH%~' + result.result.maxhum + 'RH%</th>'
+                        + '<th>' + (result.result.model = 1 ? "循环" : "一次") + '</th>'
+                        + '<th>' + (result.result.readstop = 0 ? "读停启用" : "未启用") + '</th>'
+                        + '<th>' + (result.result.tagtype = 1 ? "NFC" : "蓝牙") + '</th>');
                     // 获取设备成功后，获取温度数据
                     // 第一次发送数据，设为首页为1~10
                     getTemData(1, 10);

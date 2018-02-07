@@ -1,6 +1,5 @@
 package com.riti.pojo;
 
-import com.riti.dao.NFCTemperatureDataMapper;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
  */
 public class TempCountParams implements Serializable{
 	private int count;
-	private List<NFCTemperatureDataMapper> temperatures;
+	private List<NFCTemperatureData> temperatures;
 
 	public int getCount() {
 		return count;
@@ -23,11 +22,11 @@ public class TempCountParams implements Serializable{
 		this.count = count;
 	}
 
-	public List<NFCTemperatureDataMapper> getTemperatures() {
+	public List<NFCTemperatureData> getTemperatures() {
 		return temperatures;
 	}
 
-	public void setTemperatures(List<NFCTemperatureDataMapper> temperatures) {
+	public void setTemperatures(List<NFCTemperatureData> temperatures) {
 		this.temperatures = temperatures;
 	}
 

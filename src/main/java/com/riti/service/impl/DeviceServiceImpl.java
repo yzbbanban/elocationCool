@@ -9,6 +9,7 @@ import com.riti.service.expection.DeviceException;
 import com.riti.utils.JsonParseUtils;
 import com.riti.utils.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 /**
  * Created by brander on 2018/2/7
  */
+@Service("iDeviceService")
 public class DeviceServiceImpl implements IDeviceService {
     @Autowired
     private NFCDeviceParamsMapper deviceParamsMapper;
@@ -65,7 +67,7 @@ public class DeviceServiceImpl implements IDeviceService {
      * @return
      */
     private ResultCode<String> setSaveDeviceResult(ServiceResult message) {
-        ResultCode<String> resultCode = new ResultCode<String>();
+        ResultCode<String> resultCode = new ResultCode<>();
         resultCode.setCode(message.getIndex());
         resultCode.setMessage(message.getName());
         resultCode.setResult(null);

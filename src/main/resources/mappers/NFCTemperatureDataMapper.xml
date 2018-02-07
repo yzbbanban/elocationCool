@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.riti.dao.NFCTemperatureDataMapper" >
-  <resultMap id="BaseResultMap" type="com.riti.pojo.NFCTemperatureData" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="Uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="GoodsName" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="DateRecordTime" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="MaxTemperature" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="MinTemperature" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="Temperature" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="TempStatus" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="MaxHum" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="MinHum" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="Hum" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="HumStatus" jdbcType="SMALLINT" javaType="java.lang.Short" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.riti.dao.NFCTemperatureDataMapper">
+    <resultMap id="BaseResultMap" type="com.riti.pojo.NFCTemperatureData">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="Uid" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="GoodsName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="DateRecordTime" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="MaxTemperature" jdbcType="REAL" javaType="java.lang.Float"/>
+            <arg column="MinTemperature" jdbcType="REAL" javaType="java.lang.Float"/>
+            <arg column="Temperature" jdbcType="REAL" javaType="java.lang.Float"/>
+            <arg column="TempStatus" jdbcType="SMALLINT" javaType="java.lang.Short"/>
+            <arg column="MaxHum" jdbcType="REAL" javaType="java.lang.Float"/>
+            <arg column="MinHum" jdbcType="REAL" javaType="java.lang.Float"/>
+            <arg column="Hum" jdbcType="REAL" javaType="java.lang.Float"/>
+            <arg column="HumStatus" jdbcType="SMALLINT" javaType="java.lang.Short"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, Uid, GoodsName, DateRecordTime, MaxTemperature, MinTemperature, Temperature, 
     TempStatus, MaxHum, MinHum, Hum, HumStatus
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from NFC_Temperature_Data
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from NFC_Temperature_Data
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from NFC_Temperature_Data
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.riti.pojo.NFCTemperatureData" >
+    <insert id="insert" parameterType="com.riti.pojo.NFCTemperatureData">
     insert into NFC_Temperature_Data (id, Uid, GoodsName, 
       DateRecordTime, MaxTemperature, MinTemperature, 
       Temperature, TempStatus, MaxHum, 
@@ -41,125 +41,125 @@
       #{temperature,jdbcType=REAL}, #{tempstatus,jdbcType=SMALLINT}, #{maxhum,jdbcType=REAL}, 
       #{minhum,jdbcType=REAL}, #{hum,jdbcType=REAL}, #{humstatus,jdbcType=SMALLINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.riti.pojo.NFCTemperatureData" >
-    insert into NFC_Temperature_Data
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="uid != null" >
-        Uid,
-      </if>
-      <if test="goodsname != null" >
-        GoodsName,
-      </if>
-      <if test="daterecordtime != null" >
-        DateRecordTime,
-      </if>
-      <if test="maxtemperature != null" >
-        MaxTemperature,
-      </if>
-      <if test="mintemperature != null" >
-        MinTemperature,
-      </if>
-      <if test="temperature != null" >
-        Temperature,
-      </if>
-      <if test="tempstatus != null" >
-        TempStatus,
-      </if>
-      <if test="maxhum != null" >
-        MaxHum,
-      </if>
-      <if test="minhum != null" >
-        MinHum,
-      </if>
-      <if test="hum != null" >
-        Hum,
-      </if>
-      <if test="humstatus != null" >
-        HumStatus,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="goodsname != null" >
-        #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="daterecordtime != null" >
-        #{daterecordtime,jdbcType=VARCHAR},
-      </if>
-      <if test="maxtemperature != null" >
-        #{maxtemperature,jdbcType=REAL},
-      </if>
-      <if test="mintemperature != null" >
-        #{mintemperature,jdbcType=REAL},
-      </if>
-      <if test="temperature != null" >
-        #{temperature,jdbcType=REAL},
-      </if>
-      <if test="tempstatus != null" >
-        #{tempstatus,jdbcType=SMALLINT},
-      </if>
-      <if test="maxhum != null" >
-        #{maxhum,jdbcType=REAL},
-      </if>
-      <if test="minhum != null" >
-        #{minhum,jdbcType=REAL},
-      </if>
-      <if test="hum != null" >
-        #{hum,jdbcType=REAL},
-      </if>
-      <if test="humstatus != null" >
-        #{humstatus,jdbcType=SMALLINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.NFCTemperatureData" >
-    update NFC_Temperature_Data
-    <set >
-      <if test="uid != null" >
-        Uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="goodsname != null" >
-        GoodsName = #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="daterecordtime != null" >
-        DateRecordTime = #{daterecordtime,jdbcType=VARCHAR},
-      </if>
-      <if test="maxtemperature != null" >
-        MaxTemperature = #{maxtemperature,jdbcType=REAL},
-      </if>
-      <if test="mintemperature != null" >
-        MinTemperature = #{mintemperature,jdbcType=REAL},
-      </if>
-      <if test="temperature != null" >
-        Temperature = #{temperature,jdbcType=REAL},
-      </if>
-      <if test="tempstatus != null" >
-        TempStatus = #{tempstatus,jdbcType=SMALLINT},
-      </if>
-      <if test="maxhum != null" >
-        MaxHum = #{maxhum,jdbcType=REAL},
-      </if>
-      <if test="minhum != null" >
-        MinHum = #{minhum,jdbcType=REAL},
-      </if>
-      <if test="hum != null" >
-        Hum = #{hum,jdbcType=REAL},
-      </if>
-      <if test="humstatus != null" >
-        HumStatus = #{humstatus,jdbcType=SMALLINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.NFCTemperatureData" >
+    <insert id="insertSelective" parameterType="com.riti.pojo.NFCTemperatureData">
+        insert into NFC_Temperature_Data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uid != null">
+                Uid,
+            </if>
+            <if test="goodsname != null">
+                GoodsName,
+            </if>
+            <if test="daterecordtime != null">
+                DateRecordTime,
+            </if>
+            <if test="maxtemperature != null">
+                MaxTemperature,
+            </if>
+            <if test="mintemperature != null">
+                MinTemperature,
+            </if>
+            <if test="temperature != null">
+                Temperature,
+            </if>
+            <if test="tempstatus != null">
+                TempStatus,
+            </if>
+            <if test="maxhum != null">
+                MaxHum,
+            </if>
+            <if test="minhum != null">
+                MinHum,
+            </if>
+            <if test="hum != null">
+                Hum,
+            </if>
+            <if test="humstatus != null">
+                HumStatus,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="goodsname != null">
+                #{goodsname,jdbcType=VARCHAR},
+            </if>
+            <if test="daterecordtime != null">
+                #{daterecordtime,jdbcType=VARCHAR},
+            </if>
+            <if test="maxtemperature != null">
+                #{maxtemperature,jdbcType=REAL},
+            </if>
+            <if test="mintemperature != null">
+                #{mintemperature,jdbcType=REAL},
+            </if>
+            <if test="temperature != null">
+                #{temperature,jdbcType=REAL},
+            </if>
+            <if test="tempstatus != null">
+                #{tempstatus,jdbcType=SMALLINT},
+            </if>
+            <if test="maxhum != null">
+                #{maxhum,jdbcType=REAL},
+            </if>
+            <if test="minhum != null">
+                #{minhum,jdbcType=REAL},
+            </if>
+            <if test="hum != null">
+                #{hum,jdbcType=REAL},
+            </if>
+            <if test="humstatus != null">
+                #{humstatus,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.NFCTemperatureData">
+        update NFC_Temperature_Data
+        <set>
+            <if test="uid != null">
+                Uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="goodsname != null">
+                GoodsName = #{goodsname,jdbcType=VARCHAR},
+            </if>
+            <if test="daterecordtime != null">
+                DateRecordTime = #{daterecordtime,jdbcType=VARCHAR},
+            </if>
+            <if test="maxtemperature != null">
+                MaxTemperature = #{maxtemperature,jdbcType=REAL},
+            </if>
+            <if test="mintemperature != null">
+                MinTemperature = #{mintemperature,jdbcType=REAL},
+            </if>
+            <if test="temperature != null">
+                Temperature = #{temperature,jdbcType=REAL},
+            </if>
+            <if test="tempstatus != null">
+                TempStatus = #{tempstatus,jdbcType=SMALLINT},
+            </if>
+            <if test="maxhum != null">
+                MaxHum = #{maxhum,jdbcType=REAL},
+            </if>
+            <if test="minhum != null">
+                MinHum = #{minhum,jdbcType=REAL},
+            </if>
+            <if test="hum != null">
+                Hum = #{hum,jdbcType=REAL},
+            </if>
+            <if test="humstatus != null">
+                HumStatus = #{humstatus,jdbcType=SMALLINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.riti.pojo.NFCTemperatureData">
     update NFC_Temperature_Data
     set Uid = #{uid,jdbcType=INTEGER},
       GoodsName = #{goodsname,jdbcType=VARCHAR},
@@ -174,4 +174,59 @@
       HumStatus = #{humstatus,jdbcType=SMALLINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <insert id="insertCollect" parameterType="java.util.List">
+        INSERT
+        INTO NFC_Temperature_Data
+        (id, Uid, GoodsName,
+        DateRecordTime, MaxTemperature, MinTemperature,
+        Temperature, TempStatus, MaxHum,
+        MinHum, Hum, HumStatus)
+        VALUES
+        <foreach collection="temperatures" index="index" separator="," item="item">
+            (#{item.id,jdbcType=INTEGER}, #{item.uid,jdbcType=INTEGER}, #{item.goodsname,jdbcType=VARCHAR},
+            #{item.daterecordtime,jdbcType=VARCHAR}, #{item.maxtemperature,jdbcType=REAL},
+            #{item.mintemperature,jdbcType=REAL},
+            #{item.temperature,jdbcType=REAL}, #{item.tempstatus,jdbcType=SMALLINT}, #{item.maxhum,jdbcType=REAL},
+            #{item.minhum,jdbcType=REAL}, #{item.hum,jdbcType=REAL}, #{item.humstatus,jdbcType=SMALLINT})
+        </foreach>
+    </insert>
+
+    <select id="findAll" parameterType="com.riti.pojo.QueryTempParams" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        <include refid="Base_Column_List"></include>
+        FROM NFC_Temperature_Data
+        WHERE Uid=#{uid}
+        AND
+        DateRecordTime BETWEEN #{startTime} AND #{endTime} ORDER BY DateRecordTime DESC
+
+    </select>
+
+    <!-- id:要求唯一 resultType：返回的数据的类型 parameterType：参数类型 -->
+    <select id="findAllByPage" parameterType="map" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        <include refid="Base_Column_List"></include>
+        FROM NFC_Temperature_Data
+        WHERE Uid=#{uid}
+        AND
+        DateRecordTime BETWEEN #{startTime} AND #{endTime} ORDER BY DateRecordTime DESC
+        LIMIT #{startPage}, #{endPage}
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+        SELECT
+        count(*)
+        FROM
+        NFC_Temperature_Data
+        WHERE
+        Uid = #{uid}
+        AND
+        DateRecordTime BETWEEN #{startTime} AND #{endTime}
+    </select>
+
+    <select id="findFirstTemp" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM NFC_Temperature_Data WHERE Uid=#{uid} ORDER BY DateRecordTime DESC LIMIT 1
+    </select>
 </mapper>

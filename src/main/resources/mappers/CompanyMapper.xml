@@ -31,8 +31,8 @@
       cool_company_address, cool_company_tel, cool_company_create_time, 
       cool_company_update_time)
     values (#{coolCompanyId,jdbcType=VARCHAR}, #{coolCompanyName,jdbcType=VARCHAR}, #{coolCompanyEmail,jdbcType=VARCHAR}, 
-      #{coolCompanyAddress,jdbcType=VARCHAR}, #{coolCompanyTel,jdbcType=VARCHAR}, #{coolCompanyCreateTime,jdbcType=TIMESTAMP}, 
-      #{coolCompanyUpdateTime,jdbcType=TIMESTAMP})
+      #{coolCompanyAddress,jdbcType=VARCHAR}, #{coolCompanyTel,jdbcType=VARCHAR}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.riti.pojo.Company" >
     insert into cool_company
@@ -76,10 +76,10 @@
         #{coolCompanyTel,jdbcType=VARCHAR},
       </if>
       <if test="coolCompanyCreateTime != null" >
-        #{coolCompanyCreateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="coolCompanyUpdateTime != null" >
-        #{coolCompanyUpdateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -98,11 +98,8 @@
       <if test="coolCompanyTel != null" >
         cool_company_tel = #{coolCompanyTel,jdbcType=VARCHAR},
       </if>
-      <if test="coolCompanyCreateTime != null" >
-        cool_company_create_time = #{coolCompanyCreateTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="coolCompanyUpdateTime != null" >
-        cool_company_update_time = #{coolCompanyUpdateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </set>
     where cool_company_id = #{coolCompanyId,jdbcType=VARCHAR}
@@ -113,8 +110,22 @@
       cool_company_email = #{coolCompanyEmail,jdbcType=VARCHAR},
       cool_company_address = #{coolCompanyAddress,jdbcType=VARCHAR},
       cool_company_tel = #{coolCompanyTel,jdbcType=VARCHAR},
-      cool_company_create_time = #{coolCompanyCreateTime,jdbcType=TIMESTAMP},
-      cool_company_update_time = #{coolCompanyUpdateTime,jdbcType=TIMESTAMP}
+      cool_company_update_time = now()
     where cool_company_id = #{coolCompanyId,jdbcType=VARCHAR}
   </update>
+  <select id="findCompanyByName" parameterType="string" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    FROM cool_company
+    WHERE
+    cool_company_name=#{coolCompanyName}
+
+  </select>
+
+  <select id="findCompanyByBlurName" parameterType="string" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"></include>
+    FROM cool_company
+    WHERE cool_company_name LIKE #{companyName}
+  </select>
 </mapper>

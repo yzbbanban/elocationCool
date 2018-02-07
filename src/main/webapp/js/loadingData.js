@@ -26,7 +26,7 @@ $(function() {
 		});
 	} else {
 		alert("请登录");
-		$(location).attr('href', '/cool/login.html');
+		$(location).attr('href', '/login.html');
 	}
 });
 function getParseDeviceData(data) {

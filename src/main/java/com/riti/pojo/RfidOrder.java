@@ -1,5 +1,7 @@
 package com.riti.pojo;
 
+import java.util.Date;
+
 public class RfidOrder extends RfidOrderKey {
     private String rfidordernum;
 

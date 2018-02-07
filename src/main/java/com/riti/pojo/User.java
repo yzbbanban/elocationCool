@@ -21,11 +21,15 @@ public class User {
 
     private Date coolCreateTime;
 
-    private Short coolUserLevel;
+    private Integer coolUserLevel;
 
     private Date coolUserUpdateTime;
 
-    public User(String coolUserId, String coolCompanyId, String coolUserName, String coolUserPassword, String coolUserToken, String coolUserNick, String coolUserGender, String coolUserEmail, Date coolCreateTime, Short coolUserLevel, Date coolUserUpdateTime) {
+    public User() {
+        super();
+    }
+
+    public User(String coolUserId, String coolCompanyId, String coolUserName, String coolUserPassword, String coolUserToken, String coolUserNick, String coolUserGender, String coolUserEmail, Date coolCreateTime, Integer coolUserLevel, Date coolUserUpdateTime) {
         this.coolUserId = coolUserId;
         this.coolCompanyId = coolCompanyId;
         this.coolUserName = coolUserName;
@@ -37,10 +41,6 @@ public class User {
         this.coolCreateTime = coolCreateTime;
         this.coolUserLevel = coolUserLevel;
         this.coolUserUpdateTime = coolUserUpdateTime;
-    }
-
-    public User() {
-        super();
     }
 
     public String getCoolUserId() {
@@ -115,11 +115,11 @@ public class User {
         this.coolCreateTime = coolCreateTime;
     }
 
-    public Short getCoolUserLevel() {
+    public Integer getCoolUserLevel() {
         return coolUserLevel;
     }
 
-    public void setCoolUserLevel(Short coolUserLevel) {
+    public void setCoolUserLevel(Integer coolUserLevel) {
         this.coolUserLevel = coolUserLevel;
     }
 
@@ -129,5 +129,22 @@ public class User {
 
     public void setCoolUserUpdateTime(Date coolUserUpdateTime) {
         this.coolUserUpdateTime = coolUserUpdateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "coolUserId='" + coolUserId + '\'' +
+                ", coolCompanyId='" + coolCompanyId + '\'' +
+                ", coolUserName='" + coolUserName + '\'' +
+                ", coolUserPassword='" + coolUserPassword + '\'' +
+                ", coolUserToken='" + coolUserToken + '\'' +
+                ", coolUserNick='" + coolUserNick + '\'' +
+                ", coolUserGender='" + coolUserGender + '\'' +
+                ", coolUserEmail='" + coolUserEmail + '\'' +
+                ", coolCreateTime=" + coolCreateTime +
+                ", coolUserLevel=" + coolUserLevel +
+                ", coolUserUpdateTime=" + coolUserUpdateTime +
+                '}';
     }
 }

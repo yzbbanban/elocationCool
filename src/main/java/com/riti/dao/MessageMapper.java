@@ -2,6 +2,8 @@ package com.riti.dao;
 
 import com.riti.pojo.Message;
 
+import java.util.List;
+
 public interface MessageMapper {
     int deleteByPrimaryKey(String coolMessageId);
 
@@ -14,4 +16,8 @@ public interface MessageMapper {
     int updateByPrimaryKeySelective(Message record);
 
     int updateByPrimaryKey(Message record);
+
+    List<Message> getMessageListById(String userId);
+
+    int deleteMessageById(Message message);
 }

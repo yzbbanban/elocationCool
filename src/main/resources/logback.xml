@@ -10,7 +10,7 @@
         </filter>
     </appender>
 
-    <appender name="mmall" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="riti" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--<File>d:/mmalllog/mmall.log</File>-->
         <File>/Users/YZBbanban/Documents/apache-tomcat-8.5.14/logs/mmall.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -43,8 +43,8 @@
         </filter>
     </appender>
 
-    <logger name="com.uuabb" additivity="false" level="INFO" >
-        <appender-ref ref="mmall" />
+    <logger name="com.riti" additivity="false" level="INFO" >
+        <appender-ref ref="cool" />
         <appender-ref ref="console"/>
     </logger>
 
@@ -52,7 +52,7 @@
 
     <!-- geelynote mybatis log 日志 -->
 
-    <logger name="com.uuabb.dao" level="DEBUG"/>
+    <logger name="com.riti.dao" level="DEBUG"/>
 
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" >-->
         <!--<appender-ref ref="console"/>-->

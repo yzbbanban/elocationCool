@@ -17,9 +17,15 @@ public class Message {
 
     private Date coolMessageUpdateTime;
 
-    private Short isdelete;
+    private Integer isdelete;
 
-    public Message(String coolMessageId, String coolCompanyId, String coolUserId, String coolMessageHandleId, String coolMessageDetail, Date coolMessageCreateTime, Date coolMessageUpdateTime, Short isdelete) {
+    private User user;
+
+    public Message() {
+        super();
+    }
+
+    public Message(String coolMessageId, String coolCompanyId, String coolUserId, String coolMessageHandleId, String coolMessageDetail, Date coolMessageCreateTime, Date coolMessageUpdateTime, Integer isdelete) {
         this.coolMessageId = coolMessageId;
         this.coolCompanyId = coolCompanyId;
         this.coolUserId = coolUserId;
@@ -30,8 +36,19 @@ public class Message {
         this.isdelete = isdelete;
     }
 
-    public Message() {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Message(String companyId, String apply_userId, Integer isdelete) {
         super();
+        this.coolCompanyId = companyId == null ? null : companyId.trim();
+        this.coolUserId = apply_userId == null ? null : apply_userId.trim();
+        this.isdelete = isdelete;
     }
 
     public String getCoolMessageId() {
@@ -90,11 +107,11 @@ public class Message {
         this.coolMessageUpdateTime = coolMessageUpdateTime;
     }
 
-    public Short getIsdelete() {
+    public Integer getIsdelete() {
         return isdelete;
     }
 
-    public void setIsdelete(Short isdelete) {
+    public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
     }
 }

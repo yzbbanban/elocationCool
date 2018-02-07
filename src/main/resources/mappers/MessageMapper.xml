@@ -1,133 +1,195 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.riti.dao.MessageMapper" >
-  <resultMap id="BaseResultMap" type="com.riti.pojo.Message" >
-    <constructor >
-      <idArg column="cool_message_id" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="cool_company_id" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="cool_user_id" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="cool_message_handle_id" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="cool_message_detail" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="cool_message_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="cool_message_update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="isDelete" jdbcType="SMALLINT" javaType="java.lang.Short" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.riti.dao.MessageMapper">
+    <resultMap id="BaseResultMap" type="com.riti.pojo.Message">
+        <constructor>
+            <idArg column="cool_message_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="cool_company_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="cool_user_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="cool_message_handle_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="cool_message_detail" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="cool_message_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="cool_message_update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="isDelete" jdbcType="SMALLINT" javaType="java.lang.Integer"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     cool_message_id, cool_company_id, cool_user_id, cool_message_handle_id, cool_message_detail, 
     cool_message_create_time, cool_message_update_time, isDelete
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from cool_message
-    where cool_message_id = #{coolMessageId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from cool_message
+        where cool_message_id = #{coolMessageId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from cool_message
     where cool_message_id = #{coolMessageId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.riti.pojo.Message" >
+    <insert id="insert" parameterType="com.riti.pojo.Message">
     insert into cool_message (cool_message_id, cool_company_id, cool_user_id, 
       cool_message_handle_id, cool_message_detail, 
       cool_message_create_time, cool_message_update_time, 
       isDelete)
     values (#{coolMessageId,jdbcType=VARCHAR}, #{coolCompanyId,jdbcType=VARCHAR}, #{coolUserId,jdbcType=VARCHAR}, 
       #{coolMessageHandleId,jdbcType=VARCHAR}, #{coolMessageDetail,jdbcType=VARCHAR}, 
-      #{coolMessageCreateTime,jdbcType=TIMESTAMP}, #{coolMessageUpdateTime,jdbcType=TIMESTAMP}, 
+      now(), now(),
       #{isdelete,jdbcType=SMALLINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.riti.pojo.Message" >
-    insert into cool_message
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="coolMessageId != null" >
-        cool_message_id,
-      </if>
-      <if test="coolCompanyId != null" >
-        cool_company_id,
-      </if>
-      <if test="coolUserId != null" >
-        cool_user_id,
-      </if>
-      <if test="coolMessageHandleId != null" >
-        cool_message_handle_id,
-      </if>
-      <if test="coolMessageDetail != null" >
-        cool_message_detail,
-      </if>
-      <if test="coolMessageCreateTime != null" >
-        cool_message_create_time,
-      </if>
-      <if test="coolMessageUpdateTime != null" >
-        cool_message_update_time,
-      </if>
-      <if test="isdelete != null" >
-        isDelete,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="coolMessageId != null" >
-        #{coolMessageId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolCompanyId != null" >
-        #{coolCompanyId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolUserId != null" >
-        #{coolUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolMessageHandleId != null" >
-        #{coolMessageHandleId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolMessageDetail != null" >
-        #{coolMessageDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="coolMessageCreateTime != null" >
-        #{coolMessageCreateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="coolMessageUpdateTime != null" >
-        #{coolMessageUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isdelete != null" >
-        #{isdelete,jdbcType=SMALLINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.Message" >
-    update cool_message
-    <set >
-      <if test="coolCompanyId != null" >
-        cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolUserId != null" >
-        cool_user_id = #{coolUserId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolMessageHandleId != null" >
-        cool_message_handle_id = #{coolMessageHandleId,jdbcType=VARCHAR},
-      </if>
-      <if test="coolMessageDetail != null" >
-        cool_message_detail = #{coolMessageDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="coolMessageCreateTime != null" >
-        cool_message_create_time = #{coolMessageCreateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="coolMessageUpdateTime != null" >
-        cool_message_update_time = #{coolMessageUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isdelete != null" >
-        isDelete = #{isdelete,jdbcType=SMALLINT},
-      </if>
-    </set>
-    where cool_message_id = #{coolMessageId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.riti.pojo.Message" >
+    <insert id="insertSelective" parameterType="com.riti.pojo.Message">
+        insert into cool_message
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="coolMessageId != null">
+                cool_message_id,
+            </if>
+            <if test="coolCompanyId != null">
+                cool_company_id,
+            </if>
+            <if test="coolUserId != null">
+                cool_user_id,
+            </if>
+            <if test="coolMessageHandleId != null">
+                cool_message_handle_id,
+            </if>
+            <if test="coolMessageDetail != null">
+                cool_message_detail,
+            </if>
+            <if test="coolMessageCreateTime != null">
+                cool_message_create_time,
+            </if>
+            <if test="coolMessageUpdateTime != null">
+                cool_message_update_time,
+            </if>
+            <if test="isdelete != null">
+                isDelete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="coolMessageId != null">
+                #{coolMessageId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolCompanyId != null">
+                #{coolCompanyId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolUserId != null">
+                #{coolUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolMessageHandleId != null">
+                #{coolMessageHandleId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolMessageDetail != null">
+                #{coolMessageDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="coolMessageCreateTime != null">
+                now(),
+            </if>
+            <if test="coolMessageUpdateTime != null">
+                now(),
+            </if>
+            <if test="isdelete != null">
+                #{isdelete,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.riti.pojo.Message">
+        update cool_message
+        <set>
+            <if test="coolCompanyId != null">
+                cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolUserId != null">
+                cool_user_id = #{coolUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolMessageHandleId != null">
+                cool_message_handle_id = #{coolMessageHandleId,jdbcType=VARCHAR},
+            </if>
+            <if test="coolMessageDetail != null">
+                cool_message_detail = #{coolMessageDetail,jdbcType=VARCHAR},
+            </if>
+            <if test="coolMessageUpdateTime != null">
+                now(),
+            </if>
+            <if test="isdelete != null">
+                isDelete = #{isdelete,jdbcType=SMALLINT},
+            </if>
+        </set>
+        where cool_message_id = #{coolMessageId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.riti.pojo.Message">
     update cool_message
     set cool_company_id = #{coolCompanyId,jdbcType=VARCHAR},
       cool_user_id = #{coolUserId,jdbcType=VARCHAR},
       cool_message_handle_id = #{coolMessageHandleId,jdbcType=VARCHAR},
       cool_message_detail = #{coolMessageDetail,jdbcType=VARCHAR},
-      cool_message_create_time = #{coolMessageCreateTime,jdbcType=TIMESTAMP},
-      cool_message_update_time = #{coolMessageUpdateTime,jdbcType=TIMESTAMP},
+      cool_message_update_time = now(),
       isDelete = #{isdelete,jdbcType=SMALLINT}
     where cool_message_id = #{coolMessageId,jdbcType=VARCHAR}
   </update>
+
+    <sql id="Base_Column_User_List">
+        cool_user_id, cool_company_id, cool_user_name, cool_user_password, cool_user_token,
+        cool_user_nick, cool_user_gender, cool_user_email, cool_create_time, cool_user_level,
+        cool_user_update_time
+    </sql>
+
+    <select id="getMessageListById" parameterType="string" resultMap="getMessageUser">
+        SELECT
+          m.cool_message_handle_id,
+          m.cool_user_id,
+          m.isDelete,
+          m.cool_company_id,
+          m.cool_message_create_time,
+          m.cool_message_detail,
+          m.cool_message_id,
+          m.cool_message_update_time,
+          u.cool_user_id,
+          u.cool_company_id,
+          u.cool_user_name,
+          u.cool_user_email,
+          u.cool_user_nick,
+          u.cool_user_token,
+          u.cool_user_level,
+          u.cool_user_gender,
+          u.cool_create_time
+        FROM
+        cool_message m,cool_user u
+        WHERE
+        m.cool_message_handle_id=#{userId}
+        and
+        m.cool_user_id=u.cool_user_id
+        and
+        m.isDelete = 0
+    </select>
+    <resultMap type="com.riti.pojo.Message" id="getMessageUser">
+        <id column="cool_message_id" property="coolMessageId"/>
+        <result column="cool_message_handle_id" property="coolMessageHandleId"/>
+        <result column="cool_user_id" property="coolUserId"/>
+        <result column="cool_message_detail" property="coolMessageDetail"/>
+        <result column="isDelete" property="isdelete"/>
+        <result column="cool_company_id" property="coolCompanyId"/>
+        <result column="cool_message_create_time" property="coolMessageCreateTime"/>
+        <result column="cool_message_update_time" property="coolMessageUpdateTime"/>
+        <association property="user" javaType="com.riti.pojo.User">
+            <id property="coolUserId" column="cool_user_id"></id>
+            <result property="coolUserName" column="cool_user_name"></result>
+            <result property="coolCompanyId" column="cool_company_id"></result>
+            <result property="coolUserNick" column="cool_user_nick"></result>
+            <result property="coolUserToken" column="cool_user_token"></result>
+            <result property="coolUserGender" column="cool_user_gender"></result>
+            <result property="coolUserEmail" column="cool_user_email"></result>
+            <result property="coolUserLevel" column="cool_user_level"></result>
+            <result property="coolCreateTime" column="cool_create_time"></result>
+        </association>
+    </resultMap>
+
+    <update id="deleteMessageById" parameterType="map">
+        UPDATE
+        cool_message
+        SET isDelete=#{isdelete}
+        WHERE
+        cool_user_id=#{coolUserId}
+		AND
+		cool_company_id=#{coolCompanyId}
+    </update>
 </mapper>

@@ -74,6 +74,9 @@ public class TempServiceImpl implements ITempService {
             if (e instanceof ParseException) {// 上传参数异常解析异常)
                 resultCode = setQueryTempResult(null,
                         ServiceResult.GET_MESSAGE_FALSE);
+            }else {
+                resultCode = setQueryTempResult(null,
+                        ServiceResult.GET_MESSAGE_SERVICE_ERROR);
             }
         }
         return resultCode;

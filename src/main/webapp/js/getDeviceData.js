@@ -81,15 +81,20 @@ function getTemData(startPage, endPage) {
         },
         dataType: "json",
         success: function (data) {
-            //显示表格
-            getParseTempData(data, startPage, endPage);
+            if (data.code=="10000"){
+                //显示表格
+                getParseTempData(data, startPage, endPage);
 //			addCookie("page", data.result.count, 2);
-            if (getCookie("isPageLoading") == 0 || getCookie("isUid") != select_uid || getCookie("timeChange") == 1) {
+                if (getCookie("isPageLoading") == 0 || getCookie("isUid") != select_uid || getCookie("timeChange") == 1) {
 //				alert("ban");
-                getTempWithPage(data.result.count);
-                addCookie("isUid", select_uid, 2);
-                addCookie("isPageLoading", 1, 2);
-                addCookie("timeChange", 0, 2);
+                    getTempWithPage(data.result.count);
+                    addCookie("isUid", select_uid, 2);
+                    addCookie("isPageLoading", 1, 2);
+                    addCookie("timeChange", 0, 2);
+                }
+
+            }else {
+                alert(data.message);
             }
 
         },
@@ -102,18 +107,18 @@ function getTemData(startPage, endPage) {
 function getParseTempData(data, startPage, endPage) {
     // 获取名为code
     var result = data.result.temperatures;
-    console.log(result.length);
+    // console.log(result.length);
 
     var tempTable = $("#temp_tb");
     tempTable.empty();
     var tb = "";
     // 必须清空表格数据
     for (var i = 0; i < result.length; i++) {
-        var dateTime = result[i].DateTime;
-        var temperature = result[i].Temperature;
-        var stauts = result[i].Status;
-        var hum = result[i].Hum;
-        var humStatus = result[i].HumStatus;
+        var dateTime = result[i].daterecordtime;
+        var temperature = result[i].temperature;
+        var stauts = result[i].tempstatus;
+        var hum = result[i].hum;
+        var humStatus = result[i].humstatus;
         // <tr>
         // <th>序号</th>>
         // <th>读取温度</th>
@@ -129,7 +134,7 @@ function getParseTempData(data, startPage, endPage) {
         } else {
             resultTempStatus = "异常";
         }
-        if (stauts == 0) {
+        if (humStatus == 0) {
             resultHumStatus = "正常";
         } else {
             resultHumStatus = "异常";
